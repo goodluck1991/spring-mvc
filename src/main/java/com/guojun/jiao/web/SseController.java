@@ -8,6 +8,7 @@ import java.util.Random;
 
 /**
  * Created by guojun.jiao on 2019/1/18.
+ * 服务器端推送技术
  */
 @Controller
 public class SseController {

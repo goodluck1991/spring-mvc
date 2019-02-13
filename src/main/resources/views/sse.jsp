@@ -16,10 +16,10 @@
 </html>
 
 <script type="text/javascript">
-    if(!!window.EventSource){
+    if(!!window.EventSource){//EventSource对象只有新式的浏览器才有(chrome,firefox)等,EventSource是sse的客户端
         var source = new EventSource('push');
         s = '';
-        source.addEventListener('message',function(e){
+        source.addEventListener('message',function(e){//添加sse客户端监听,在此获得服务器端推送的消息
             s+=e.data+"<br/>";
             $("#msgFrompPush").html(s);
         });
