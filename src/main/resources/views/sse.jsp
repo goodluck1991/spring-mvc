@@ -10,31 +10,33 @@
 <body>
     <div id="msgFrompPush"></div>
 
-    <script type="text/javascript" src="assets/js/jquery.min.js"/>
-    <script type="text/javascript">
-        if(!window.EventSource){
-            var source = new EventSource('push');
-            s = '';
-            source.addEventListener('message',function(e){
-                s++e.data+"<br/>";
-                $("#msgFrompPush").html(s);
-            });
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 
-            source.addEventListener('open',function(e){
-                console.log("connection open ...");
-            },false);
-
-            source.addEventListener('error',function(e){
-                if(e.readyState == EventSource.CLOSED){
-                    console.log("connection close ...");
-                }else{
-                    console.log(e.readyState);
-                }
-            },false);
-        }else{
-            console.log("浏览器不支持SSE");
-        }
-    </script>
 </body>
 </html>
+
+<script type="text/javascript">
+    if(!!window.EventSource){
+        var source = new EventSource('push');
+        s = '';
+        source.addEventListener('message',function(e){
+            s+=e.data+"<br/>";
+            $("#msgFrompPush").html(s);
+        });
+
+        source.addEventListener('open',function(e){
+            console.log("connection open ...");
+        },false);
+
+        source.addEventListener('error',function(e){
+            if(e.readyState == EventSource.CLOSED){
+                console.log("connection close ...");
+            }else{
+                console.log(e.readyState);
+            }
+        },false);
+    }else{
+        console.log("浏览器不支持SSE");
+    }
+</script>
 
