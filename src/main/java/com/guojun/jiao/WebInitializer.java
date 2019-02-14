@@ -17,10 +17,12 @@ import javax.servlet.ServletRegistration.Dynamic;
 public class WebInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
+        //新建WebApplicationContext,注册配置类,并将其和当前servletContext关联
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(MvcConfig.class);
-        context.setServletContext(servletContext);//新建WebApplicationContext,注册配置类,并将其和当前servletContext关联
-        Dynamic dynamic = servletContext.addServlet("dispatcher",new DispatcherServlet(context));//注册SpringMVC的DispatcherServlet
+        context.setServletContext(servletContext);
+        //注册SpringMVC的DispatcherServlet
+        Dynamic dynamic = servletContext.addServlet("dispatcher",new DispatcherServlet(context));
         dynamic.addMapping("/");
         dynamic.setLoadOnStartup(1);
         dynamic.setAsyncSupported(true);//开启异步方法支持
