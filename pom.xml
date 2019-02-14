@@ -60,6 +60,21 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
+        <!--Spring测试依赖包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-framework.version}</version>
+            <!--说明该包存活在test周期-->
+            <scope>test</scope>
+        </dependency>
+        <!--junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
         <!-- 使用SLF4J和Logback作为日志 -->
         <dependency>
             <groupId>org.slf4j</groupId>
