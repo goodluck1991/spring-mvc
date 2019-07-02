@@ -10,6 +10,7 @@ import org.springframework.web.context.request.async.DeferredResult;
  */
 @Service
 public class PushService {
+    //hehehe
     private DeferredResult<String> deferredResult;
 
     public DeferredResult<String> getAsyncUpdate(){
